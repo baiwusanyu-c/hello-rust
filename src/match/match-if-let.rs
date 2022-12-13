@@ -13,6 +13,7 @@ fn matchDemo(){
     let dire = Direction::South;
     // match 模式也是一个表达式，可以直接将匹配结果赋值给变量
     let res = match dire {
+        1..=5 => println!("..= 语法允许你匹配一个闭区间序列内的值"),
         Direction::East => println!("East"),
         Direction::North | Direction::South => {
             println!("South or North");
@@ -22,9 +23,9 @@ fn matchDemo(){
 }
 
 // 当你只要匹配一个条件，且忽略其他条件时就用 if let ，否则都用 match。
-// 匹配 v 是否为 3，
+// 匹配 v 是否为 3 (some 是标准库的 enum Option<T>)
 fn ifLetDemo(v: i32){
-    if let 3 = v {
+    if let Some(3) = v {
         println!("three");
     }
 }
