@@ -94,3 +94,28 @@ fn dangle() -> &String { // dangle 返回一个字符串的引用
 } // 这里 s 离开作用域并被丢弃。其内存被释放。
   // 危险！
 ```
+
+swc 是基於 rust 的生態，因此不管是swc本身還是其基於swc的插件，都是基於rust編寫，
+最終編譯成wasm文件，在node中執行，實現能夠去支持前端工具鏈能力
+rust -> swc 
+                  -> vite-plugin
+rust -> swc-plugin
+
+wasm文件是基於WebAssembly的可執行文件， WebAssembly是下一代Web客户端开发技术，目前已经是W3C的标准，94%的浏览器已经支持了WebAssembly标准。WebAssembly技术通过加载非Javascript语言（如C/C++、Rust、Go等）编写的源码经过交叉编译后生成的二进制文件，然后通过Javascript API调用相关函数完成计算，由于这些计算模块采用编译后的接近机器码的方式运行，因此WebAssembly技术可以让代码运行效率接近本机的运行效率，这大大提高了Web客户端程序的运行效率。当然，不建议使用WebAssembly操作浏览器DOM，否则运行效率可能会更低。
+
+例如你的rust脚本包含一個add函數，編譯成wasm文件后，可以通過js進行加載編譯，最終可以通過js直接調用這個add函數
+```javascript
+ function loadWebAssembly(fileName) {
+            return fetch(fileName)
+                .then(response => response.arrayBuffer())
+                .then(buffer => WebAssembly.compile(buffer)) // 编译
+                .then(module => { return WebAssembly.instantiate(module) }); //创建WebAssembly实例
+        };
+
+        //调用加载WebAssembly函数，注意wasm文件必须要本html文件在服务器同一目录，否则可能会出现404错误
+        loadWebAssembly('hellowasm.wasm').then(instance => {
+            console.time("WebAssembly")
+            console.log(instance.exports.add(45,1))
+          
+        });
+```
