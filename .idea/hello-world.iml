@@ -8,6 +8,8 @@
       <sourceFolder url="file://$MODULE_DIR$/ownership/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/variable/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/closures/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/guessing_game/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/temp" />
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
@@ -17,6 +19,8 @@
       <excludeFolder url="file://$MODULE_DIR$/ownership/target" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
       <excludeFolder url="file://$MODULE_DIR$/variable/target" />
+      <excludeFolder url="file://$MODULE_DIR$/closures/target" />
+      <excludeFolder url="file://$MODULE_DIR$/guessing_game/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
